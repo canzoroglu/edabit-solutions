@@ -62,10 +62,32 @@ function medium() {
     }
     return progress;
   }
+
+  // given array of numbers between 0-11, missingNum() returns missing number among these numbers
+  // @param {Array} arr -> One number between 0-11 must be missing
+  // @return {Number[1,10]} num
+  function missingNum(arr) {
+    if (!Array.isArray(arr)) {
+      throw new Error("Parameter must be Array");
+    }
+    if(!arr.every(item => typeof item === "number")) throw new Error("Elements must be Number");
+    if(arr.length < 9) throw new Error("Only one number must be missing");
+    let lt1bg10 = arr.filter(item => item < 1 || item > 10); // filter out numbers lt 1 bg 10
+    if(lt1bg10.length) throw new Error("Parameter elements must be bt 0 ls 11");
+    let s1 = new Set(arr);
+    if(s1.size !== arr.length) throw new Error("Parameter elements must not be repeated");
+    if(arr.length === 10) throw new Error("One number must be missing");
+    for (let i = 1; i <= 10; i++) {
+      if(arr.indexOf(i) < 0) return i;
+    }
+  }
+
   return {
-    progressDays
+    progressDays,
+    missingNum
   };
 }
+
 module.exports = {
   secretSociety: easy().secretSociety,
   isSpecialArray: easy().isSpecialArray,
