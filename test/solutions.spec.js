@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
-  largestSwap, progressDays} = require("../solutions");
+  largestSwap, progressDays, testJackpot} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -144,6 +144,27 @@ describe("Medium Challenges", () => {
     });
     it("Returns 10", () => {
       expect(missingNum([1, 2, 3, 4, 5, 6, 7, 8, 9])).to.equal(10);
+    });
+  });
+
+  describe("#Hitting the Jackpot", () => {
+    it("Parameter must be Array", () => {
+      expect(testJackpot.bind(null, {})).to.throw("Parameter must be Array");
+    });
+    it("Parameter is Array", () => {
+      expect(testJackpot.bind(null, [])).to.not.throw("Parameter must be Array");
+    });
+    it("Return False", () => {
+      expect(testJackpot([])).to.equal(false);
+    });
+    it("Return True", () => {
+      expect(testJackpot(["a"])).to.equal(true);
+    });
+    it("Return False", () => {
+      expect(testJackpot(["a", "b"])).to.equal(false);
+    });
+    it("Return True", () => {
+      expect(testJackpot(["a", "a", "a"])).to.equal(true);
     });
   });
 

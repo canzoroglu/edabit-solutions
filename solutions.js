@@ -82,9 +82,21 @@ function medium() {
     }
   }
 
+  // testJackpot() returns true if given array's elements are the same
+  // @param {Array} result
+  // @returns {Boolean}
+  function testJackpot(result) {
+  	if(!Array.isArray(result)) throw new Error("Parameter must be Array");
+  	if(!result.length) return false;
+  	if(result.length === 1) return true;
+  	let setResult = new Set(result);
+  	return setResult.size === 1;
+  }
+  
   return {
     progressDays,
-    missingNum
+    missingNum,
+    testJackpot
   };
 }
 
@@ -92,5 +104,6 @@ module.exports = {
   secretSociety: easy().secretSociety,
   isSpecialArray: easy().isSpecialArray,
   largestSwap: easy().largestSwap,
-  progressDays: medium().progressDays
+  progressDays: medium().progressDays,
+  testJackpot: medium().testJackpot
 };
