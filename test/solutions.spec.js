@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
-  largestSwap, progressDays, testJackpot} = require("../solutions");
+  largestSwap, progressDays, testJackpot, checkEquals} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -165,6 +165,27 @@ describe("Medium Challenges", () => {
     });
     it("Return True", () => {
       expect(testJackpot(["a", "a", "a"])).to.equal(true);
+    });
+  });
+
+  describe("#Fix the Error: Value vs. Reference Types", () => {
+    it("Parameters must be Array", () => {
+      expect(checkEquals.bind(null, {}, [])).to.throw("Parameters must be Array");
+    });
+    it("Parameters are Array", () => {
+      expect(checkEquals.bind(null, [1,2], [1,2])).to.not.throw("Parameter must be Array");
+    });
+    it("Return False", () => {
+      expect(checkEquals([], [1])).to.equal(false);
+    });
+    it("Return True", () => {
+      expect(checkEquals(["a", 1], [1, "a"])).to.equal(true);
+    });
+    it("Return False", () => {
+      expect(checkEquals(["a", "b"], ["a", "c"])).to.equal(false);
+    });
+    it("Return True", () => {
+      expect(checkEquals([1, "a", "c"], ["a", "c", 1])).to.equal(true);
     });
   });
 

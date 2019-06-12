@@ -92,11 +92,24 @@ function medium() {
   	let setResult = new Set(result);
   	return setResult.size === 1;
   }
-  
+
+  // checkEquals() returns true if elements of given array's are the same
+  // @param {Array, Array} arr1, arr2
+  // @returns {Boolean}
+  function checkEquals(arr1, arr2){
+    if(!Array.isArray(arr1) || !Array.isArray(arr2)) throw new Error("Parameters must be Array");
+    if(!arr1.length || !arr2.length) return false;
+    for(let i of arr1){
+      if(arr2.indexOf(i) < 0) return false;
+    }
+    return true;
+  }
+
   return {
     progressDays,
     missingNum,
-    testJackpot
+    testJackpot,
+    checkEquals
   };
 }
 
@@ -105,5 +118,6 @@ module.exports = {
   isSpecialArray: easy().isSpecialArray,
   largestSwap: easy().largestSwap,
   progressDays: medium().progressDays,
-  testJackpot: medium().testJackpot
+  testJackpot: medium().testJackpot,
+  checkEquals: medium().checkEquals
 };
