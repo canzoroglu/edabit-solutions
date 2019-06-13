@@ -105,11 +105,24 @@ function medium() {
     return true;
   }
 
+  // alternatingCaps() returns string whose characters' case opposite of adjacent ones
+  // first char's case is upper
+  // @param {String} str
+  // @return {String}
+  function alternatingCaps(str){
+    if(typeof str !== "string") throw new Error("Parameter must be string");
+    if(!str.length) throw new Error("String length must be bigger than 0");
+    let strArr = str.split("");
+    return strArr.map((c, i) => i % 2 === 0 ? c.toUpperCase() :
+                                       c.toLowerCase()).join("");
+  }
+
   return {
     progressDays,
     missingNum,
     testJackpot,
-    checkEquals
+    checkEquals,
+    alternatingCaps
   };
 }
 
@@ -119,5 +132,6 @@ module.exports = {
   largestSwap: easy().largestSwap,
   progressDays: medium().progressDays,
   testJackpot: medium().testJackpot,
-  checkEquals: medium().checkEquals
+  checkEquals: medium().checkEquals,
+  alternatingCaps: medium().alternatingCaps
 };

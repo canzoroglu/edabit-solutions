@@ -1,7 +1,8 @@
 const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
-  largestSwap, progressDays, testJackpot, checkEquals} = require("../solutions");
+  largestSwap, progressDays, testJackpot, checkEquals,
+  alternatingCaps} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -186,6 +187,21 @@ describe("Medium Challenges", () => {
     });
     it("Return True", () => {
       expect(checkEquals([1, "a", "c"], ["a", "c", 1])).to.equal(true);
+    });
+  });
+
+  describe("#Alternating Caps", () => {
+    it("Parameter must be string", () => {
+      expect(alternatingCaps.bind(null, 12)).to.throw("Parameter must be string");
+    });
+    it("String length must be bigger than 0", () => {
+      expect(alternatingCaps.bind(null, "")).to.throw("String length must be bigger than 0");
+    });
+    it("Hello Return HeLlO", () => {
+      expect(alternatingCaps("Hello")).to.equal("HeLlO");
+    });
+    it("Return HeY, hOw aRe yOu?", () => {
+      expect(alternatingCaps("Hey, how are you?")).to.equal("HeY, hOw aRe yOu?");
     });
   });
 
