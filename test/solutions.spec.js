@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
   largestSwap, progressDays, testJackpot, checkEquals,
-  alternatingCaps, factorize} = require("../solutions");
+  alternatingCaps, factorize, flatten} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -217,6 +217,18 @@ describe("Medium Challenges", () => {
     });
     it("factorize(12) returns [1,2,3,4,6,12]", () => {
       expect(factorize(12)).to.eql([1,2,3,4,6,12]);
+    });
+  });
+
+  describe("#Flatening an Array", () => {
+    it("Parameter must be an Array", () => {
+      expect(flatten.bind(null, {})).to.throw("Parameter must be Array");
+    });
+    it("[[1, 2], [3, 4]] returns [1, 2, 3, 4]", () => {
+      expect(flatten([[1, 2], [3, 4]])).to.eql([1, 2, 3, 4]);
+    });
+    it("[[true, false], [false, false]] returns [true, false, false, false]", () => {
+      expect(flatten([[true, false], [false, false]])).to.eql([true, false, false, false]);
     });
   });
 

@@ -135,13 +135,22 @@ function medium() {
     return factors;
   }
 
+  // flatten() flattens given array of subarrays into one array
+  // @param {Array} arr
+  // @return {Array}
+  function flatten(arr) {
+    if(!Array.isArray(arr)) throw new Error("Parameter must be Array");
+    return arr.reduce((flat, el) => flat.concat(el), []);
+  }
+
   return {
     progressDays,
     missingNum,
     testJackpot,
     checkEquals,
     alternatingCaps,
-    factorize
+    factorize,
+    flatten
   };
 }
 
@@ -153,5 +162,6 @@ module.exports = {
   testJackpot: medium().testJackpot,
   checkEquals: medium().checkEquals,
   alternatingCaps: medium().alternatingCaps,
-  factorize: medium().factorize
+  factorize: medium().factorize,
+  flatten: medium().flatten
 };
