@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
   largestSwap, progressDays, testJackpot, checkEquals,
-  alternatingCaps, factorize, flatten} = require("../solutions");
+  alternatingCaps, factorize, flatten, doubleLetters} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -229,6 +229,18 @@ describe("Medium Challenges", () => {
     });
     it("[[true, false], [false, false]] returns [true, false, false, false]", () => {
       expect(flatten([[true, false], [false, false]])).to.eql([true, false, false, false]);
+    });
+  });
+
+  describe("#Double Letters", () => {
+    it("Parameter must be String", () => {
+      expect(doubleLetters.bind(null, 12)).to.throw("Parameter must be String");
+    });
+    it("loop returns true", () => {
+      expect(doubleLetters("loop")).to.equal(true);
+    });
+    it("orange returns false", () => {
+      expect(doubleLetters("orange")).to.equal(false);
     });
   });
 

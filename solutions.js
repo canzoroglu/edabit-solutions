@@ -143,6 +143,14 @@ function medium() {
     return arr.reduce((flat, el) => flat.concat(el), []);
   }
 
+  // doubleLetters() returns true if given word has two consecutive identical letters
+  // @param {String} str
+  // @return {Boolean}
+  function doubleLetters(str) {
+    if(typeof str !== "string") throw new Error("Parameter must be String");
+    return /(\w)\1/.test(str);
+  }
+
   return {
     progressDays,
     missingNum,
@@ -150,7 +158,8 @@ function medium() {
     checkEquals,
     alternatingCaps,
     factorize,
-    flatten
+    flatten,
+    doubleLetters
   };
 }
 
@@ -163,5 +172,6 @@ module.exports = {
   checkEquals: medium().checkEquals,
   alternatingCaps: medium().alternatingCaps,
   factorize: medium().factorize,
-  flatten: medium().flatten
+  flatten: medium().flatten,
+  doubleLetters: medium().doubleLetters
 };
