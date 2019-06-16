@@ -117,12 +117,31 @@ function medium() {
                                        c.toLowerCase()).join("");
   }
 
+  // factorize() returns array of numbers which are factors of given num
+  // @param {Integer[1,]} num
+  // @return {Array}
+  function factorize(num){
+    if(typeof num !== "number" || num < 1 || Math.round(num) !== num){
+      throw new Error("Parameter must be a positive Integer");
+    }
+    let factors = [1];
+    let preFactor = 2;
+    while(preFactor <= num){
+      if(num % preFactor === 0){
+        factors.push(preFactor);
+      }
+      preFactor++;
+    }
+    return factors;
+  }
+
   return {
     progressDays,
     missingNum,
     testJackpot,
     checkEquals,
-    alternatingCaps
+    alternatingCaps,
+    factorize
   };
 }
 
@@ -133,5 +152,6 @@ module.exports = {
   progressDays: medium().progressDays,
   testJackpot: medium().testJackpot,
   checkEquals: medium().checkEquals,
-  alternatingCaps: medium().alternatingCaps
+  alternatingCaps: medium().alternatingCaps,
+  factorize: medium().factorize
 };

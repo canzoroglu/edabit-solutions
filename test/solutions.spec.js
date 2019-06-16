@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 //const should = require('chai').should();
 const {secretSociety, isSpecialArray,
   largestSwap, progressDays, testJackpot, checkEquals,
-  alternatingCaps} = require("../solutions");
+  alternatingCaps, factorize} = require("../solutions");
 
 describe("Easy Challenges", () => {
 
@@ -202,6 +202,21 @@ describe("Medium Challenges", () => {
     });
     it("Return HeY, hOw aRe yOu?", () => {
       expect(alternatingCaps("Hey, how are you?")).to.equal("HeY, hOw aRe yOu?");
+    });
+  });
+
+  describe("#Factorize a Number", () => {
+    it("Parameter must be a positive Integer", () => {
+      expect(factorize.bind(null, "1")).to.throw("Parameter must be a positive Integer");
+    });
+    it("Parameter must be a positive Integer", () => {
+      expect(factorize.bind(null, -12)).to.throw("Parameter must be a positive Integer");
+    });
+    it("factorize(4) returns [1,2,4]", () => {
+      expect(factorize(4)).to.eql([1,2,4]);
+    });
+    it("factorize(12) returns [1,2,3,4,6,12]", () => {
+      expect(factorize(12)).to.eql([1,2,3,4,6,12]);
     });
   });
 
